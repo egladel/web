@@ -1,20 +1,95 @@
+html {
+	font-size: 16px;
+}
 body {
-    font-family: "Roboto", sans-serif;
-    font-size: 1em;
-    line-height: 1.4;
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	line-height: 1.8rem;
+}
+
+.container {
+	min-width: 992px !important;
+}
+
+header {
+	padding: 2rem 0;
+	text-align: center;
+	background-color: #e9ecef;
+}
+
+header .container div {
+	padding: 1rem 0;
 }
 
 h1 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 4em;
-    line-height: 2em;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-size: 4rem;
+	color: #607d8b;
 }
 
 h2 {
-    font-family: 'Indie Flower', cursive;
-    font-weight: 400;
-    font-size: 1.8em;
-    font-style: italic;
-    line-height: 2em;
+	font-family: "Indie Flower", cursive;
+	font-weight: 400;
+	font-size: 1.8rem;
+	font-style: italic;
+	line-height: 5rem;
+	margin-top: 1rem;
+	background-color: #607d8b;
+	color: white;
+}
+
+section {
+	padding: 2rem 0;
+}
+
+button:hover {
+	background-color: #ddd !important;
+	color: #000 !important;
+}
+.inputEl,
+.gregorianDateEl {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.inputEl label {
+	width: 90px;
+	display: inline-block;
+	text-align: center;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+.inputEl button,
+.gregorianDateEl label {
+	color: #fff;
+	background-color: #9e9e9e;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0.25rem 0.8rem;
+	line-height: 1.5rem;
+	border: none;
+	border-radius: 0.2rem;
+}
+
+.inputEl button {
+	cursor: pointer;
+	font-size: 0.875rem;
+}
+
+.inputEl .today button {
+	padding: 0.25rem 1.2rem;
+	background-color: #ff9800;
+}
+
+.gregorianDateEl {
+	margin: 2rem 0;
+}
+
+.gregorianDateEl label {
+	font-size: 1rem;
 }

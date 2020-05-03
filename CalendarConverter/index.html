@@ -10,20 +10,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
     <link rel="stylesheet" href="./resources/css/reset.css" />
     <link rel="stylesheet" href="./resources/css/index.css" />
     <title>Calendar Conveter</title>
 </head>
 
 <body>
-    <header class="text-center pt-3 pb-3 jumbotron jumbotron-fluid">
+    <header>
         <div class="container">
-            <div class="pb-2">
-                <h1 class="w3-text-metro-dark-blue">Calendar Converter</h1>
+            <div>
+                <h1>Calendar Converter</h1>
             </div>
-            <div class="pb-4">
-                <h2 class="w3-text-metro-dark-blue">Including the 360-day calendar of bible prophecy</h2>
+            <div>
+                <h2>Including the 360-day calendar of bible prophecy</h2>
             </div>
             <div>
                 <p>
@@ -37,85 +36,87 @@
     </header>
     <section class="container">
         <!-- Date Input -->
-        <div class="d-flex justify-content-between">
-            <div class="pt-2 pb-2">
-                <button type="button" class="btn btn-dark btn-sm pl-3 pr-3">Today</button>
+        <div class="inputEl">
+            <div class="today">
+                <button type="button" id="today">TODAY</button>
             </div>
-            <div>
-                <button type="button" class="w3-button w3-round w3-small w3-khaki w3-hover-gray">&lt;</button>
-                <label class="p-2">CENTURY</label>
-                <button type="button" class="btn btn-dark btn-sm">&gt;</button>
+            <div class="century">
+                <button type="button">&lt;</button>
+                <label>CENTURY</label>
+                <button type="button">&gt;</button>
             </div>
-            <div>
-                <button type="button" class="btn btn-dark btn-sm">&lt;</button>
-                <label class="p-2">YEAR</label>
-                <button type="button" class="btn btn-dark btn-sm">&gt;</button>
+            <div class="year">
+                <button type="button">&lt;</button>
+                <label>YEAR</label>
+                <button type="button">&gt;</button>
             </div>
-            <div>
-                <button type="button" class="btn btn-dark btn-sm">&lt;</button>
-                <label class="p-2">MONTH</label>
-                <button type="button" class="btn btn-dark btn-sm">&gt;</button>
+            <div class="month">
+                <button type="button">&lt;</button>
+                <label>MONTH</label>
+                <button type="button"">&gt;</button>
             </div>
-            <div>
-                <button type="button" class="btn btn-dark btn-sm">&lt;</button>
-                <label class="p-2">DAY</label>
-                <button type="button" class="btn btn-dark btn-sm">&gt;</button>
+            <div class="day">
+                <button type="button">&lt;</button>
+                <label>DAY</label>
+                <button type="button">&gt;</button>
             </div>
         </div><!-- // Date Input -->
         <!-- Input Date Result -->
-        <div class="d-flex justify-content-between pt-4 pb-4">
+        <div class="gregorianDateEl">
             <!-- Gregorian Date -->
             <div class="input-group col-sm-7 p-0">
                 <div class="input-group-prepend col pl-0 pr-0">
-                    <span class="input-group-text w3-blue-grey text-light">Gregorian Date</span>
+                    <span class="input-group-text  w3-blue-grey text-light">Gregorian Date</span>
                 </div>
                 <div class="col pr-0 pl-1">
-                    <input type="number" id="year" value="" class="form-control" placeholder="year" />
+                    <input type="text" id="yearEl" value="" class="form-control" placeholder="year" />
                 </div>
                 <div class="col-sm-3 pr-0 pl-1">
-                    <select id="month" class="form-control">
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
+                    <select id="monthEl" class="form-control">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
                     </select>
                 </div>
                 <div class="col pr-0 pl-1">
-                    <input type="number" id="day" value="" class="form-control" placeholder="Day" />
+                    <input type="text" id="dayEl" value="" class="form-control" placeholder="Day" />
                 </div>
                 <div class="col-sm-3 pr-0 pl-1">
-                    <input type="text" id="normal" value="Normal Year" readonly class="form-control  w3-light-grey" />
+                    <input type="text" id="leapEl" value="Normal Year" readonly class="form-control  w3-light-grey" />
                 </div>
             </div> <!-- // Gregorian Date -->
-            <!-- Tiem -->
+            <!-- Time -->
             <div class="input-group col pr-0">
                 <div class="input-group-prepend">
                     <span class="input-group-text  w3-blue-grey text-light">Time</span>
                 </div>
-                <input type="text" id="hour" value="00" class="form-control" />
+                <input type="text" id="hourEl" value="00" class="form-control" />
                 <span class="pl-1 pr-1">:</span>
-                <input type="text" id="minute" value="00" class="form-control" />
+                <input type="text" id="minuteEl" value="00" class="form-control" />
                 <span class="pl-1 pr-1">:</span>
-                <input type="text" id="second" value="00" class="form-control" />
-            </div><!-- // Tiem -->
+                <input type="text" id="secondEl" value="00" class="form-control" />
+            </div><!-- // Time -->
             <!-- Weekday -->
-            <div class="input-group col pr-0">
-                <div class="input-group-prepend">
+            <div class="input-group col pl-0 pr-0">
+                <div class="input-group-prepend col pr-0">
                     <span class="input-group-text  w3-blue-grey text-light">Weekday</span>
                 </div>
-                <input type="text" id="weekday" value="" class="form-control" />
+                <input type="text" id="weekdayEl" value="" class="form-control w3-light-grey" readonly />
             </div><!-- // Weekday -->
         </div><!-- //Input Date Result -->
         </div>
     </section>
+    <script src="./resources/js/Utils.js"></script>
+    <script src="./resources/js/calendar.js"></script>
     <script src="./resources/js/index.js"></script>
 </body>
 
