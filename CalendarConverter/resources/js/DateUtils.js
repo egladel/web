@@ -1,4 +1,4 @@
-class Utils {
+class DateUtils {
 	constructor() {
 		this.dateObj = new Date();
 		this.year = this.dateObj.getFullYear();
