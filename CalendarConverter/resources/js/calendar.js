@@ -207,31 +207,34 @@ function calLastDay(month) {
 
 function setSexagenary() {
 	const year = parseInt(yearEl.value);
+	const { celestial, earthly } = getSexagenary(year);
+
+	const sexagenary = `${celestialStem[celestial].cn}${earthlyBranches[earthly].cn}(${celestialStem[celestial].kr}${earthlyBranches[earthly].kr})년, ${earthlyBranches[earthly].zodiac}띠`;
+	sexagenaryEl.value = sexagenary;
+}
+
+function getSexagenary(year) {
 	const units = 3;
 	const CELESTIAL_LEN = celestialStem.length;
 	const EARTHLY_LEN = earthlyBranches.length;
 	const SIXTY = CELESTIAL_LEN * EARTHLY_LEN;
-	let yearStr;
 	let celestial;
 	let earthly;
+
 	if (year < 0) {
-		yearStr = (Math.abs(year - units) + units).toString();
-		celestial = yearStr.charAt(yearStr.length - 1);
-		earthly = ((Math.abs(year - units) + units) % SIXTY) % EARTHLY_LEN;
-	} else if (year < units) {
-		yearStr = (year - units + CELESTIAL_LEN).toString();
-		celestial = yearStr.charAt(yearStr.length - 1);
-		earthly = ((year - units + CELESTIAL_LEN) % SIXTY) % EARTHLY_LEN;
+		celestial = calMod(year - units + 1, CELESTIAL_LEN);
+		earthly = calMod(calMod(year - units + 1, SIXTY), EARTHLY_LEN);
 	} else {
-		yearStr = (year - units).toString();
-		celestial = yearStr.charAt(yearStr.length - 1);
-		earthly = ((year - units) % SIXTY) % EARTHLY_LEN;
+		celestial = calMod(year - units, CELESTIAL_LEN);
+		earthly = calMod(calMod(year - units, SIXTY), EARTHLY_LEN);
 	}
 
-	console.log(yearStr);
-	console.log(celestial);
-	console.log(earthly);
+	return {
+		celestial,
+		earthly,
+	};
+}
 
-	const sexagenary = `${celestialStem[celestial].cn}${earthlyBranches[earthly].cn}(${celestialStem[celestial].kr}${earthlyBranches[earthly].kr})`;
-	sexagenaryEl.value = sexagenary;
+function calMod(dividend, divisor) {
+	return ((dividend % divisor) + divisor) % divisor;
 }
