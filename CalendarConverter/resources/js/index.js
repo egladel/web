@@ -65,7 +65,7 @@ function handleCalendar(event) {
 }
 
 function displaySexagenaryEls() {
-	for (var year = -5000; year <= 2020; year = year + 3) {
+	for (var year = -5037; year <= 2020; year = year + 3) {
 		trObj = document.createElement("TR");
 		let cnt = 0;
 		for (var i = year; i < year + 3; i++) {

@@ -79,7 +79,12 @@ function setDay(value) {
 
 // Gregorian Date Leap or Normal setting
 function setLeap() {
-	if ((yearEl.value % 4 === 0 && yearEl.value % 100 !== 0) || yearEl.value % 400 === 0) {
+	let year = parseInt(yearEl.value);
+	if (year < 0) year++;
+
+	console.log(year);
+
+	if ((calMod(year, 4) === 0 && calMod(year, 100) !== 0) || calMod(year, 400) === 0) {
 		leapEl.value = LEAP_YEAR;
 	} else {
 		leapEl.value = NORMAL_YEAR;
