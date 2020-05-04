@@ -1,5 +1,6 @@
 const buttons = document.querySelectorAll("button");
 const inputEls = document.querySelectorAll("#yearEl, #monthEl, #dayEl");
+const selectEl = document.querySelector("#monthEl");
 
 const months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
@@ -10,9 +11,19 @@ const MONTH = "month";
 const DAY = "day";
 const EVENT_CLICK = "click";
 
-function setToday() {
+function setMonthOptions() {
+	for (let key in months) {
+		optionObj = document.createElement("option");
+		optionObj.text = months[key];
+		optionObj.value = parseInt(key) + 1;
+		selectEl.options.add(optionObj);
+	}
+}
+
+function setToday(event) {
 	const now = new DateUtils();
 	setCalendar(now);
+	if (typeof event === "undefined") setCalendarOther();
 }
 
 function addEvent() {
@@ -32,7 +43,7 @@ function handleCalendar(event) {
 
 		switch (elementName) {
 			case TODAY:
-				setToday();
+				setToday(elementName);
 				break;
 			case CENTURY:
 			case YEAR:
@@ -49,11 +60,11 @@ function handleCalendar(event) {
 		}
 	}
 
-	setLeap();
-	setWeekday();
+	setCalendarOther();
 }
 
 function init() {
+	setMonthOptions();
 	setToday();
 	addEvent();
 }

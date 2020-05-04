@@ -6,10 +6,38 @@ const minuteEl = document.getElementById("minuteEl");
 const secondEl = document.getElementById("secondEl");
 const weekdayEl = document.getElementById("weekdayEl");
 const leapEl = document.getElementById("leapEl");
+const sexagenaryEl = document.getElementById("sexagenaryEl");
 
 const week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 const NORMAL_YEAR = "Normal year";
 const LEAP_YEAR = "Leap year";
+const celestialStem = new Array(
+	{ cn: "癸", kr: "계" },
+	{ cn: "甲", kr: "갑" },
+	{ cn: "乙", kr: "을" },
+	{ cn: "丙", kr: "병" },
+	{ cn: "丁", kr: "정" },
+	{ cn: "戊", kr: "무" },
+	{ cn: "己", kr: "기" },
+	{ cn: "庚", kr: "경" },
+	{ cn: "辛", kr: "신" },
+	{ cn: "壬", kr: "임" }
+);
+
+const earthlyBranches = new Array(
+	{ cn: "亥", kr: "해", zodiac: "돼지" },
+	{ cn: "子", kr: "자", zodiac: "쥐" },
+	{ cn: "丑", kr: "축", zodiac: "소" },
+	{ cn: "寅", kr: "인", zodiac: "범" },
+	{ cn: "卯", kr: "묘", zodiac: "토끼" },
+	{ cn: "辰", kr: "진", zodiac: "용" },
+	{ cn: "巳", kr: "사", zodiac: "뱀" },
+	{ cn: "午", kr: "오", zodiac: "말" },
+	{ cn: "未", kr: "미", zodiac: "양" },
+	{ cn: "申", kr: "신", zodiac: "원숭이" },
+	{ cn: "酉", kr: "유", zodiac: "닭" },
+	{ cn: "戌", kr: "술", zodiac: "개" }
+);
 
 const LESS_THAN = "<";
 const GREATER_THAN = ">";
@@ -22,8 +50,12 @@ function setCalendar(dateObj) {
 	setMonth(dateObj.month);
 	setDay(dateObj.day);
 	setTime(dateObj.hour, dateObj.minute, dateObj.second);
-	setWeekday(dateObj.weekday);
+}
+
+function setCalendarOther() {
+	setWeekday();
 	setLeap();
+	setSexagenary();
 }
 
 // Gregorian Date Year Setting
@@ -171,4 +203,35 @@ function calLastDay(month) {
 			break;
 	}
 	return lastDay;
+}
+
+function setSexagenary() {
+	const year = parseInt(yearEl.value);
+	const units = 3;
+	const CELESTIAL_LEN = celestialStem.length;
+	const EARTHLY_LEN = earthlyBranches.length;
+	const SIXTY = CELESTIAL_LEN * EARTHLY_LEN;
+	let yearStr;
+	let celestial;
+	let earthly;
+	if (year < 0) {
+		yearStr = (Math.abs(year - units) + units).toString();
+		celestial = yearStr.charAt(yearStr.length - 1);
+		earthly = ((Math.abs(year - units) + units) % SIXTY) % EARTHLY_LEN;
+	} else if (year < units) {
+		yearStr = (year - units + CELESTIAL_LEN).toString();
+		celestial = yearStr.charAt(yearStr.length - 1);
+		earthly = ((year - units + CELESTIAL_LEN) % SIXTY) % EARTHLY_LEN;
+	} else {
+		yearStr = (year - units).toString();
+		celestial = yearStr.charAt(yearStr.length - 1);
+		earthly = ((year - units) % SIXTY) % EARTHLY_LEN;
+	}
+
+	console.log(yearStr);
+	console.log(celestial);
+	console.log(earthly);
+
+	const sexagenary = `${celestialStem[celestial].cn}${earthlyBranches[earthly].cn}(${celestialStem[celestial].kr}${earthlyBranches[earthly].kr})`;
+	sexagenaryEl.value = sexagenary;
 }

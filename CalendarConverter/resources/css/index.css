@@ -93,3 +93,7 @@ button:hover {
 .gregorianDateEl label {
 	font-size: 1rem;
 }
+
+.sexagenary {
+	padding: 2rem 0;
+}
