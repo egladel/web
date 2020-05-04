@@ -97,3 +97,25 @@ button:hover {
 .sexagenary {
 	padding: 2rem 0;
 }
+
+table {
+	font-size: 1rem;
+	width: 100%;
+}
+tr {
+	text-align: center;
+}
+
+tr:nth-child(even) {
+	background-color: #ecf0f1;
+}
+
+th {
+	background-color: #2d3436;
+}
+
+th:nth-child(4),
+th:nth-child(5),
+th:nth-child(6) {
+	background-color: #636e72;
+}

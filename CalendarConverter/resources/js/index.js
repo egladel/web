@@ -65,21 +65,39 @@ function handleCalendar(event) {
 }
 
 function displaySexagenaryEls() {
-	for (var year = -5000; year <= 2020; year++) {
-		if (year === 0) continue;
-		let { celestial, earthly } = getSexagenary(year);
+	for (var year = -5000; year <= 2020; year = year + 3) {
 		trObj = document.createElement("TR");
+		let cnt = 0;
+		for (var i = year; i < year + 3; i++) {
+			cnt++;
+			if (i === 0) continue;
+			let { celestial, earthly } = getSexagenary(i);
+			tdObj1 = document.createElement("TD");
+			if (i < 0) {
+				tdObj1.innerHTML = `B.C. ${Math.abs(i)}`;
+			} else {
+				tdObj1.innerHTML = `A.D. ${i}`;
+			}
+			tdObj2 = document.createElement("TD");
+			tdObj2.innerHTML = `${celestialStem[celestial].cn}${earthlyBranches[earthly].cn}(${celestialStem[celestial].kr}${earthlyBranches[earthly].kr})년`;
+			tdObj3 = document.createElement("TD");
+			tdObj3.innerHTML = `${earthlyBranches[earthly].zodiac}띠`;
 
-		tdObj1 = document.createElement("TD");
-		tdObj1.innerHTML = year;
-		tdObj2 = document.createElement("TD");
-		tdObj2.innerHTML = `${celestialStem[celestial].cn}${earthlyBranches[earthly].cn}(${celestialStem[celestial].kr}${earthlyBranches[earthly].kr})년`;
-		tdObj3 = document.createElement("TD");
-		tdObj3.innerHTML = `${earthlyBranches[earthly].zodiac}띠`;
+			if (celestial === 1 && earthly === 1) {
+				tdObj1.style.backgroundColor = "#f1c40f";
+				tdObj2.style.backgroundColor = "#f1c40f";
+				tdObj3.style.backgroundColor = "#f1c40f";
+			}
 
-		trObj.appendChild(tdObj1);
-		trObj.appendChild(tdObj2);
-		trObj.appendChild(tdObj3);
+			if (cnt === 2) {
+				tdObj1.style.borderLeft = "1px solid #ccc";
+				tdObj3.style.borderRight = "1px solid #ccc";
+			}
+
+			trObj.appendChild(tdObj1);
+			trObj.appendChild(tdObj2);
+			trObj.appendChild(tdObj3);
+		}
 
 		sexagenaryEls.appendChild(trObj);
 	}

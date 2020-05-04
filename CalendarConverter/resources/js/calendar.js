@@ -228,7 +228,6 @@ function getSexagenary(year) {
 		celestial = calMod(year - units, CELESTIAL_LEN);
 		earthly = calMod(calMod(year - units, SIXTY), EARTHLY_LEN);
 	}
-
 	return {
 		celestial,
 		earthly,
