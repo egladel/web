@@ -242,3 +242,30 @@ function getSexagenary(year) {
 function calMod(dividend, divisor) {
 	return ((dividend % divisor) + divisor) % divisor;
 }
+
+function getCycle() {
+	const CELESTIAL_LEN = celestialStem.length;
+	const EARTHLY_LEN = earthlyBranches.length;
+	const cycle = new Array();
+	let celestialCnt = 0;
+	let earthlyCnt = 0;
+	let cycleObj = new Object();
+	for (let i = 0; i < 60; i++) {
+		celestialCnt++;
+		earthlyCnt++;
+		cycleObj.cNo = calMod(celestialCnt, CELESTIAL_LEN);
+		cycleObj.eNo = calMod(earthlyCnt, EARTHLY_LEN);
+		cycleObj.sexagenary = `${celestialStem[calMod(celestialCnt, CELESTIAL_LEN)].cn}${earthlyBranches[calMod(earthlyCnt, EARTHLY_LEN)].cn}(${
+			celestialStem[calMod(celestialCnt, CELESTIAL_LEN)].kr
+		}${earthlyBranches[calMod(earthlyCnt, EARTHLY_LEN)].kr})`;
+		cycleObj.zodiac = earthlyBranches[calMod(earthlyCnt, EARTHLY_LEN)].zodiac;
+
+		cycle.push(cycleObj);
+		cycleObj = new Object();
+
+		if (celestialCnt === 10) celestialCnt = 0;
+		if (earthlyCnt === 12) earthlyCnt = 0;
+	}
+
+	return cycle;
+}

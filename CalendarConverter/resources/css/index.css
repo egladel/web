@@ -7,12 +7,8 @@ body {
 	line-height: 1.8rem;
 }
 
-.container {
-	min-width: 992px !important;
-}
-
 header {
-	padding: 2rem 0;
+	padding-top: 2rem;
 	text-align: center;
 	background-color: #e9ecef;
 }
@@ -21,34 +17,124 @@ header .container div {
 	padding: 1rem 0;
 }
 
-h1 {
+header h1 {
 	font-family: "Poppins", sans-serif;
 	font-weight: 600;
 	font-size: 4rem;
-	color: #607d8b;
+	color: #4b6584;
 }
 
-h2 {
+header h2 {
 	font-family: "Indie Flower", cursive;
 	font-weight: 400;
 	font-size: 1.8rem;
 	font-style: italic;
 	line-height: 5rem;
 	margin-top: 1rem;
-	background-color: #607d8b;
+	background-color: #4b6584;
 	color: white;
 }
 
-section {
-	padding: 2rem 0;
+header p {
+	font-size: 0.9rem;
+	line-height: 1.5rem;
 }
 
 button:hover {
 	background-color: #ddd !important;
 	color: #000 !important;
 }
+
+.container {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 576px) {
+	.container {
+		max-width: 540px;
+	}
+}
+
+@media (min-width: 768px) {
+	.container {
+		max-width: 720px;
+	}
+}
+
+@media (min-width: 992px) {
+	.container {
+		max-width: 960px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1140px;
+	}
+}
+
+section .container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.inputEls {
+	padding: 2rem 1rem;
+	border: 1px solid #495057;
+	margin: 2rem 0;
+}
+
+.inputEls .title {
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+input[type="text"],
+.select {
+	height: calc(1.8125rem + 1px);
+	padding: 0.25rem 0.5rem;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	border-radius: 0.2rem;
+	border: 1px solid #ced4da;
+	background-color: #fff;
+	background-clip: padding-box;
+	color: #495057;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+select {
+	border: 0px;
+	text-align: center;
+	height: 100%;
+	outline: 0;
+}
+
+input[type="text"],
+label,
+.select {
+	margin-right: 4px;
+	text-align: center;
+}
+
+input[type="text"]:not(:last-child) {
+	margin-right: 0rem;
+}
+
+input:read-only {
+	background-color: #f1f2f6;
+	border-color: #f1f2f6;
+}
+
+input::placeholder {
+	font-size: 0.875rem;
+	color: #495057;
+}
+
 .inputEl,
-.gregorianDateEl {
+.gregorianDateEls {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -62,10 +148,9 @@ button:hover {
 	font-weight: 500;
 }
 
-.inputEl button,
-.gregorianDateEl label {
+.inputEl button {
 	color: #fff;
-	background-color: #9e9e9e;
+	background-color: #778ca3;
 	display: inline-block;
 	text-decoration: none;
 	text-align: center;
@@ -74,48 +159,154 @@ button:hover {
 	line-height: 1.5rem;
 	border: none;
 	border-radius: 0.2rem;
-}
-
-.inputEl button {
 	cursor: pointer;
 	font-size: 0.875rem;
 }
 
 .inputEl .today button {
 	padding: 0.25rem 1.2rem;
-	background-color: #ff9800;
+	background-color: #f7b731;
 }
 
-.gregorianDateEl {
+.gregorianDateEls {
 	margin: 2rem 0;
 }
 
-.gregorianDateEl label {
-	font-size: 1rem;
+.gregorianDateEl,
+.time,
+.weekday,
+.sexagenary {
+	display: flex;
 }
 
-.sexagenary {
-	padding: 2rem 0;
+.gregorianDateEls label,
+.sexagenary label {
+	color: #fff;
+	height: calc(1.8125rem + 1px);
+	background-color: #4b6584;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0.25rem 1rem;
+	border: none;
+	border-radius: 0.2rem;
+}
+
+.sexagenary label {
+	background-color: #57606f;
+	width: 20rem;
+}
+
+.sexagenary input {
+	width: 100%;
+	background-color: #dfe4ea;
+	border-color: #dfe4ea;
+}
+
+.time span,
+.search span {
+	padding: 0 0.2rem;
+}
+
+.search {
+	padding: 1rem 1rem;
+	margin: 1rem 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #e9ecef;
+}
+
+.material-icons {
+	margin-top: 0.9rem;
+	margin-right: 1rem;
+}
+
+.inputSearchEl button {
+	color: #fff;
+	background-color: #4b6584;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0.4rem 1rem;
+	line-height: 1.5rem;
+	border: none;
+	border-radius: 0.2rem;
+	cursor: pointer;
+	font-size: 0.875rem;
+	margin-left: 0.5rem;
+}
+
+.radioEl {
+	margin-left: 2rem;
+	vertical-align: middle;
+}
+
+.radioEl label {
+	margin-left: 0.3rem;
+	margin-right: 1rem;
 }
 
 table {
-	font-size: 1rem;
 	width: 100%;
 }
-tr {
+th {
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	color: white;
+	background-color: #0a3d62;
+}
+
+td {
+	font-size: 0.9rem;
+}
+
+#sexagenaryElsByYear tr {
 	text-align: center;
 }
 
-tr:nth-child(even) {
+#sexagenaryElsByYear tr:nth-child(even),
+#sexagenaryElsByCycle tr:nth-child(even) {
 	background-color: #ecf0f1;
 }
 
-th {
-	background-color: #2d3436;
+#sexagenaryElsByYear th:nth-child(4),
+#sexagenaryElsByYear th:nth-child(5),
+#sexagenaryElsByYear th:nth-child(6) {
+	background-color: #3c6382;
 }
 
-th:nth-child(4),
-th:nth-child(5),
-th:nth-child(6) {
-	background-color: #636e72;
+#sexagenaryElsByCycle th:nth-child(3),
+#sexagenaryElsByCycle th:nth-child(4) {
+	width: 40%;
+}
+
+#sexagenaryElsByCycle th:nth-child(even) {
+	background-color: #596275;
+}
+
+#sexagenaryElsByCycle td {
+	vertical-align: middle;
+}
+
+#sexagenaryElsByCycle td:nth-child(1),
+#sexagenaryElsByCycle td:nth-child(2) {
+	text-align: center;
+}
+
+#sexagenaryElsByCycle td:nth-child(2) {
+	border-left: 1px solid #ccc;
+}
+
+#sexagenaryElsByCycle td:nth-child(3),
+#sexagenaryElsByCycle td:nth-child(4) {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#sexagenaryElsByCycle {
+	display: none;
 }

@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex">
     <link
         href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./resources/css/reset.css" />
     <link rel="stylesheet" href="./resources/css/index.css" />
     <title>Calendar Conveter</title>
@@ -22,19 +21,20 @@
                 <h1>Calendar Converter</h1>
             </div>
             <div>
-                <h2>Including the 360-day calendar of bible prophecy</h2>
+                <h2>The Sexagenary Cycle</h2>
             </div>
             <div>
                 <p>
-                    Example: Just after midnight, the start of Dec. 21, 2012, corresponds to "Day 21.25" of 360
-                    Calendar, which is
-                    six hours into the 21st day of
-                    the 10th or 11th month, and is also Teveth 8th on the regular Hebrew calendar.
+                    입력 연도를 육십갑자 연도로 변환합니다.<br>
+                    CENTURY, YEAR, MONTH, DAY의 각 increment, decrement 버튼을 클릭하면, 윤년 및 윤달에 맞춰서 변경됩니다.<br>
+                    연도 검색이 가능하며, By Year 또는 By Sexagenary Cycle을 선택하면 검색 연도에 해당하는 리스트가 출력됩니다.<br>
+                    End가 Start보다 이전 연도일 경우, 현재 연도로 자동 변경됩니다. BC는 -로 입력하셔야 합니다. (ex. -3000).
                 </p>
             </div>
         </div>
     </header>
     <section class="container">
+    <div class="inputEls">
         <!-- Date Input -->
         <div class="inputEl">
             <div class="today">
@@ -62,71 +62,111 @@
             </div>
         </div><!-- // Date Input -->
         <!-- Input Date Result -->
-        <div class="gregorianDateEl">
+        <div class="gregorianDateEls">
             <!-- Gregorian Date -->
-            <div class="input-group col-sm-7 p-0">
-                <div class="input-group-prepend col pl-0 pr-0">
-                    <span class="input-group-text  w3-blue-grey text-light">Gregorian Date</span>
+            <div class="gregorianDateEl">
+                <div>
+                    <label class="title">Gregorian Date</label>
                 </div>
-                <div class="col pr-0 pl-1">
-                    <input type="text" id="yearEl" value="" class="form-control" placeholder="year" />
+                <div>
+                    <input type="text" id="yearEl" value="" placeholder="year" size="4" />
                 </div>
-                <div class="col-sm-3 pr-0 pl-1">
-                    <select id="monthEl" class="form-control"></select>
+                <div class="select">
+                    <select id="monthEl"></select>
                 </div>
-                <div class="col pr-0 pl-1">
-                    <input type="text" id="dayEl" value="" class="form-control" placeholder="Day" />
+                <div>
+                    <input type="text" id="dayEl" value="" placeholder="Day" size="4"/>
                 </div>
-                <div class="col-sm-3 pr-0 pl-1">
-                    <input type="text" id="leapEl" value="Normal Year" readonly class="form-control  w3-light-grey" />
+                <div>
+                    <input type="text" id="leapEl" value="Normal Year" readonly size="12" />
                 </div>
             </div> <!-- // Gregorian Date -->
             <!-- Time -->
-            <div class="input-group col pr-0">
-                <div class="input-group-prepend">
-                    <span class="input-group-text  w3-blue-grey text-light">Time</span>
+            <div class="time">
+                <div>
+                    <label class="title">Time</label>
                 </div>
-                <input type="text" id="hourEl" value="00" class="form-control" />
-                <span class="pl-1 pr-1">:</span>
-                <input type="text" id="minuteEl" value="00" class="form-control" />
-                <span class="pl-1 pr-1">:</span>
-                <input type="text" id="secondEl" value="00" class="form-control" />
+                <input type="text" id="hourEl" value="00" size="2"/>
+                <span>:</span>
+                <input type="text" id="minuteEl" value="00" size="2"/>
+                <span>:</span>
+                <input type="text" id="secondEl" value="00" size="2"/>
             </div><!-- // Time -->
             <!-- Weekday -->
-            <div class="input-group col pl-0 pr-0">
-                <div class="input-group-prepend col pr-0">
-                    <span class="input-group-text  w3-blue-grey text-light">Weekday</span>
+            <div class="weekday">
+                <div>
+                    <label class="title">Weekday</label>
                 </div>
-                <input type="text" id="weekdayEl" value="" class="form-control w3-light-grey" readonly />
+                <input type="text" id="weekdayEl" value="" readonly size="12" />
             </div><!-- // Weekday -->
         </div><!-- //Input Date Result -->
         <!-- The Sexagenary Cycle -->
-        <div class="sexagenary input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text  w3-dark-gray text-light">The Sexagenary Cycle</span>
+        <div class="sexagenary">
+            <div>
+                <label>The Sexagenary Cycle</label>
             </div>
-            <input type="text" id="sexagenaryEl" value="" readonly class="form-control w3-light-grey" />
+            <input type="text" id="sexagenaryEl" value="" readonly />
         </div><!-- //The Sexagenary Cycle -->
+    </div>
+    </section>
+    <section  class="container">
+    <div>
+        <!-- The Sexagenary Cycle Search -->
+        <div class="search">
+            <div>
+                <span class="material-icons">search</span>
+            </div>
+            <div class="inputSearchEl">
+                <input type="text" id="startYear" value="" placeholder="Start" size="10" />
+                <span>&#126;</span>
+                <input type="text" id="endYear" value="" placeholder = "End"  size="10" />
+                <button type="button" id="btnSearch">SEARCH</button>
+            </div>
+            <div class="radioEl">
+                <input type="radio" id="byYear" name="selectList" value="year" checked />
+                <label>By Year</label>
+                <input type="radio" id="bySexagenary" name="selectList" value="sexagenary" />
+                <label>By Sexagenary Cycle</label>
+            </div>
+        </div><!-- //The Sexagenary Cycle Search -->
+
 
         <!-- The Sexagenary Cycle Table -->
-        <table id="sexagenaryEls">
-            <thead>
-                <tr class="w3-black">
-                    <th>Year</th>
-                    <th>Sexagenary(干支)</th>
-                    <th>Zodiac</th>
-                    <th>Year</th>
-                    <th>Sexagenary(干支)</th>
-                    <th>Zodiac</th>
-                    <th>Year</th>
-                    <th>Sexagenary(干支)</th>
-                    <th>Zodiac</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table><!-- //The Sexagenary Cycle Table -->
-
+        <div id="sexagenaryElsByCycle">
+            <table >
+                <thead>
+                    <tr>
+                        <th>Sexagenary(干支)</th>
+                        <th>Zodiac</th>
+                        <th>Year(B.C.)</th>
+                        <th>Year(A.D.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div id="sexagenaryElsByYear">
+            <table >
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Sexagenary(干支)</th>
+                        <th>Zodiac</th>
+                        <th>Year</th>
+                        <th>Sexagenary(干支)</th>
+                        <th>Zodiac</th>
+                        <th>Year</th>
+                        <th>Sexagenary(干支)</th>
+                        <th>Zodiac</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <!-- //The Sexagenary Cycle Table -->
+    </div>
     </section>
     <script src="./resources/js/DateUtils.js"></script>
     <script src="./resources/js/calendar.js"></script>
